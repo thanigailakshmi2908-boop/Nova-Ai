@@ -1,0 +1,27 @@
+NOVA AI — IMAGE GENERATION SETUP
+
+This build uses a Netlify Function so the Cloudflare secret stays server-side.
+
+1. Deploy the entire project folder to Netlify. Do not deploy only index.html.
+2. In Netlify: Site configuration -> Environment variables.
+3. Add:
+   CF_API_TOKEN = your Cloudflare Workers AI API token
+   CF_ACCOUNT_ID = your Cloudflare Account ID
+4. Give the token the Workers AI permission required by your Cloudflare account.
+5. Save the variables.
+6. Trigger a new Netlify deploy.
+7. Open Nova AI -> Image Studio -> enter a prompt -> Generate image.
+
+The app calls:
+/.netlify/functions/cloudflare-image
+
+The function calls Cloudflare FLUX.1 schnell:
+@cf/black-forest-labs/flux-1-schnell
+
+If image generation still fails, open this URL on your deployed site:
+/.netlify/functions/cloudflare-image-health
+
+Expected result when configured:
+{"ok":true,"cloudflareTokenConfigured":true,"accountIdConfigured":true}
+
+Never put CF_API_TOKEN in GitHub, index.html, app.js, or netlify.toml.

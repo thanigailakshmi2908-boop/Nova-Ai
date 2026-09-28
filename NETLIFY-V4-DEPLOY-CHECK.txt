@@ -1,0 +1,21 @@
+NOVA AI v4.0 — IMAGE GENERATION CHECK
+
+GitHub Pages cannot execute serverless functions.
+
+1. Deploy this same repository to Netlify.
+2. Netlify Functions directory: netlify/functions
+3. Publish directory: .
+4. Add Functions environment variables:
+   CF_API_TOKEN = your Cloudflare Workers AI token
+   CF_ACCOUNT_ID = your Cloudflare account ID
+   OPENROUTER_API_KEY = optional fallback key
+5. Redeploy after changing environment variables.
+6. Open your Netlify site and verify:
+   /.netlify/functions/cloudflare-image-health
+   It should return ok: true.
+7. In Nova AI Settings on GitHub Pages, set:
+   Serverless Proxy URL = https://YOUR-NETLIFY-SITE.netlify.app
+8. Press Test image server.
+9. Generate an image.
+
+Never put API tokens in GitHub source files.

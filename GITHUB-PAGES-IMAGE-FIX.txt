@@ -1,0 +1,20 @@
+NOVA AI v3.8 — GitHub Pages image/chat fallback
+
+The 405 Not Allowed screen in the earlier build happened because GitHub Pages is a static host and cannot execute /.netlify/functions/*.
+
+This build keeps the Netlify Functions for secure deployments, but also adds a browser fallback for Cloudflare chat and Cloudflare FLUX image generation.
+
+For the GitHub Pages fallback:
+1. Open Nova Settings.
+2. Enter your Cloudflare Workers AI token and Cloudflare Account ID.
+3. Save settings.
+4. Use Chat or Image Studio again.
+
+Security:
+For a public production site, do not put a long-lived API token in client-side code or a public repository. Cloudflare recommends keeping API tokens secret and using environment variables/server-side requests. The included Netlify Functions are the safer deployment path.
+
+Image generation:
+Cloudflare FLUX.1 schnell supports prompts up to 2048 characters and up to 8 diffusion steps. Nova uses 4 steps for Standard quality and 8 steps for High quality. The app enforces a 4-image-per-day application limit.
+
+Nova Pro:
+The Pro card now has a local demo activation state and a non-functional scanner preview. It does not collect or process real payments in this browser build.
